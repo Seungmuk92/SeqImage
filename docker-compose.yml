@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    #restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      #echo 'nimda' | docker run --rm -i datalust/seq config hash 
+      - SEQ_FIRSTRUN_ADMINPASSWORDHASH=FKHeOgaQO0/N3tC2HYwBFNvdNXt1KAz/gnzkv4SKqQxqeupMSg==
+    ports:
+      - 33080:80
+      - 33341:5341
+    volumes:
+      - seq-logs:/data
+
+volumes:
+  seq-logs:
